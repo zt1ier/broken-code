@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsnslfof6jdqb"]
+
+[ext_resource type="Script" uid="uid://dnve6r744rs33" path="res://scripts/background.gd" id="1_bkp1e"]
+[ext_resource type="Shader" uid="uid://bxhd8b0efdmgw" path="res://scripts/shaders/cool-green-grid.gdshader" id="1_y0upk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bkp1e"]
+shader = ExtResource("1_y0upk")
+shader_parameter/grid_size = Vector2(48, 48)
+shader_parameter/line_thickness = 0.1
+shader_parameter/grid_color = Color(0, 1, 0, 0.3)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/screen_size = Vector2(1280, 720)
+
+[node name="Background" type="ColorRect"]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 1280.0
+offset_bottom = 776.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_bkp1e")
+
+[node name="CoolGreenGridThing" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_bkp1e")
+layout_mode = 0
+offset_right = 1408.0
+offset_bottom = 904.0

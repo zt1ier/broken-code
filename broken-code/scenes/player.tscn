@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cye5m5kb4hvhn"]
+
+[ext_resource type="Script" uid="uid://bbvnmv0caa1aw" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://cup40jus5myfs" path="res://assets/twiangle.png" id="2_g2els"]
+
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0.192982, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.722222, 0.638889)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_3vyb7")
+triangle_draw_points = Array[Vector2]([Vector2(0, 32), Vector2(-64, 64), Vector2(64, 64)])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(24, 24)
+texture = SubResource("GradientTexture2D_qhqgy")
+
+[node name="Visual" type="Sprite2D" parent="."]
+modulate = Color(1.5, 0, 0, 1)
+position = Vector2(18.2408, 0.000121553)
+rotation = -4.71238
+scale = Vector2(1, 1.30657)
+texture = ExtResource("2_g2els")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+rotation = 1.57079
+polygon = PackedVector2Array(0.000195471, -88, 63.9999, 56.0001, -64.0001, 55.9999)
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="DashTimer" type="Timer" parent="."]
