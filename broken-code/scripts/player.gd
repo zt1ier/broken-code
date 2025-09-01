@@ -1,18 +1,9 @@
 class_name Player extends CharacterBody2D
 
 
-const DEFAULT_COLOR: Color = Color.RED
-
-
 @export var speed: float = 20000.0
 @export var dash_cooldown: float = 1.5
 @export var dash_distance: float = 1000.0
-
-@export var triangle_draw_points : Array[Vector2] = [
-	Vector2(0, -16),
-	Vector2(-24, 24),
-	Vector2(24, 24)
-]
 
 
 var can_dash: bool = false
