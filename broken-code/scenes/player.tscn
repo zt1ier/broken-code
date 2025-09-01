@@ -15,7 +15,6 @@ fill_to = Vector2(0.722222, 0.638889)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_3vyb7")
-triangle_draw_points = Array[Vector2]([Vector2(0, 32), Vector2(-64, 64), Vector2(64, 64)])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(24, 24)
@@ -39,4 +38,7 @@ position_smoothing_speed = 7.0
 [node name="DashCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="DashDuration" type="Timer" parent="."]
+
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="DashDuration" to="." method="_on_dash_duration_timeout"]
