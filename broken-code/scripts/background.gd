@@ -14,6 +14,7 @@ func _ready() -> void:
 	if player == null:
 		printerr("background.gd: Player reference is null")
 		set_physics_process(false)
+		set_process(false)
 
 
 func _process(delta: float) -> void:

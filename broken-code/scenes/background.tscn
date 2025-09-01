@@ -7,9 +7,11 @@
 shader = ExtResource("1_y0upk")
 shader_parameter/grid_size = Vector2(48, 48)
 shader_parameter/line_thickness = 0.1
-shader_parameter/grid_color = Color(0, 1, 0, 0.3)
+shader_parameter/grid_color = Color(0, 1, 0, 0.5)
 shader_parameter/offset = Vector2(0, 0)
-shader_parameter/screen_size = Vector2(1280, 720)
+shader_parameter/screen_size = Vector2(1152, 648)
+shader_parameter/glow_radius = 5.0
+shader_parameter/glow_strength = 0.2
 
 [node name="Background" type="ColorRect"]
 offset_left = -128.0

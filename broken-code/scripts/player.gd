@@ -4,8 +4,9 @@ class_name Player extends CharacterBody2D
 const DEFAULT_COLOR: Color = Color.RED
 
 
-@export var speed: float = 400.0
-@export var dash_cooldown: float = 1.0
+@export var speed: float = 20000.0
+@export var dash_cooldown_time: float = 1.5
+@export var dash_distance: float = 1000.0
 
 @export var triangle_draw_points : Array[Vector2] = [
 	Vector2(0, -16),
@@ -17,13 +18,13 @@ const DEFAULT_COLOR: Color = Color.RED
 var can_dash: bool = false
 
 
-@onready var dash_timer: Timer = $DashTimer
+@onready var dash_cooldown: Timer = $DashCooldown
 
 
 func _ready() -> void:
 	if not is_in_group("Player"):
 		add_to_group("Player")
-	dash_timer.wait_time = dash_cooldown
+	dash_cooldown.wait_time = dash_cooldown_time
 
 
 func _physics_process(delta: float) -> void:
@@ -36,11 +37,19 @@ func _physics_process(delta: float) -> void:
 
 func _handle_movement(delta: float) -> void:
 	var dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = dir.normalized() * speed
+	velocity = dir.normalized() * speed * delta
 
-	if Input.is_action_just_pressed("dash"):
-		dash(delta)
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dash(dir, delta)
 
 
-func dash(delta: float) -> void:
-	pass
+func dash(direction: Vector2, delta: float) -> void:
+	can_dash = false
+
+	global_position = direction.normalized() * dash_distance * delta
+
+	dash_cooldown.start()
+
+
+func _on_dash_cooldown_timeout() -> void:
+	can_dash = true

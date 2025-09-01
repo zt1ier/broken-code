@@ -2,10 +2,10 @@ shader_type canvas_item;
 
 uniform vec2 grid_size = vec2(48.0, 48.0); // distance between lines
 uniform float line_thickness = 0.1; // line thickness
-uniform vec4 grid_color : source_color = vec4(0.0, 1.0, 0.0, 0.3); // main line color
+uniform vec4 grid_color : source_color = vec4(0.0, 1.0, 0.0, 0.5); // green line color
 uniform vec2 offset = vec2(0.0, 0.0); // offset for scrolling
 uniform vec2 screen_size = vec2(1152.0, 648.0); // yeah
-uniform float glow_radius = 8.0; // how far the glow spreads
+uniform float glow_radius = 5.0; // how far the glow spreads
 uniform float glow_strength = 0.2; // intensity multiplier
 
 void fragment() {
